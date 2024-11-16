@@ -1,0 +1,25 @@
+<mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Produtos</mat-card-title>
+    </mat-card-header>
+  
+    <div *ngIf="products$ | async as productPage; else loading">
+      <app-product-table [products]="productPage.content"> </app-product-table>
+  
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 15]"
+        [length]="productPage.page.totalElements"
+        [pageIndex]="pageIndex"
+        [pageSize]="pageSize"
+        (page)="loadProducts($event)"
+        aria-label="Select page of products"
+      ></mat-paginator>
+    </div>
+  
+    <ng-template #loading>
+      <div class="loading">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+    </ng-template>
+  </mat-card>
+  
