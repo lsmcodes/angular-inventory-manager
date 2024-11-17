@@ -1,0 +1,56 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Detalhes do Produto</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="code" placeholder="Ex. 12345" #code />
+        <mat-hint align="end">{{ code.value.length }}/50</mat-hint>
+        @if (form.get('code')?.invalid) {
+        <mat-error>
+          {{ getErrorMessage("code") }}
+        </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="name" placeholder="Ex. Caderno Universitário" #name />
+        <mat-hint align="end">{{ name.value.length }}/100</mat-hint>
+        @if (form.get('name')?.invalid) {
+        <mat-error>
+          {{ getErrorMessage("name") }}
+        </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Preço Unitário</mat-label>
+        <input matInput formControlName="price" placeholder="Ex. 27.90" />
+        @if (form.get('price')?.invalid) {
+        <mat-error>
+          {{ getErrorMessage("price") }}
+        </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Quantidade</mat-label>
+        <input matInput formControlName="quantity" placeholder="Ex. 14" />
+        @if (form.get('quantity')?.invalid) {
+          <mat-error>
+            {{ getErrorMessage("quantity") }}
+          </mat-error>
+          }
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-stroked-button (click)="onCancel()">Cancelar</button>
+        <button mat-flat-button (click)="onSubmit()">Salvar</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>
