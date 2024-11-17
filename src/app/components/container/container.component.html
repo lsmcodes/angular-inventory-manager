@@ -1,25 +1,46 @@
 <mat-card appearance="outlined">
   <mat-card-header>
-    <mat-card-title>Produtos</mat-card-title>
+    <mat-card-title>Estoque</mat-card-title>
   </mat-card-header>
 
-  <div *ngIf="products$ | async as productPage; else loading">
-    <app-product-table
-      [products]="productPage.content"
-      (add)="onAdd()"
-      (edit)="onEdit($event)"
-      (delete)="onDelete($event)"
-    ></app-product-table>
+  <mat-tab-group>
+    <mat-tab label="Produtos">
+      <div *ngIf="products$ | async as productPage; else loading">
+        <app-product-table
+          [products]="productPage.content"
+          (add)="onAddProduct()"
+          (edit)="onEditProduct($event)"
+          (delete)="onDeleteProduct($event)"
+        ></app-product-table>
 
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 15]"
-      [length]="productPage.page.totalElements"
-      [pageIndex]="pageIndex"
-      [pageSize]="pageSize"
-      (page)="loadProducts($event)"
-      aria-label="Select page of products"
-    ></mat-paginator>
-  </div>
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 15]"
+          [length]="productPage.page.totalElements"
+          [pageIndex]="productPageIndex"
+          [pageSize]="productPageSize"
+          (page)="loadProducts($event)"
+          aria-label="Select page of products"
+        ></mat-paginator>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Movimentações">
+      <div *ngIf="inventoryEvents$ | async as inventoryEventPage; else loading">
+        <app-inventory-event-table
+          [inventoryEvents]="inventoryEventPage.content"
+        ></app-inventory-event-table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 15]"
+          [length]="inventoryEventPage.page.totalElements"
+          [pageIndex]="inventoryEventPageIndex"
+          [pageSize]="inventoryEventPageSize"
+          (page)="loadInventoryEvents($event)"
+          aria-label="Select page of inventory events"
+        ></mat-paginator>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 
   <ng-template #loading>
     <div class="loading">
