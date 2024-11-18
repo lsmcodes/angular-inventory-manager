@@ -3,11 +3,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { Product } from '../../model/product';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-table',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, MatTableModule],
+  imports: [CurrencyPipe, MatButtonModule, MatIconModule, MatTableModule],
   templateUrl: './product-table.component.html',
   styleUrl: './product-table.component.scss',
 })
