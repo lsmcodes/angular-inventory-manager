@@ -18,7 +18,13 @@ export class ProductTableComponent {
   @Output() edit: EventEmitter<Product> = new EventEmitter(false);
   @Output() delete: EventEmitter<Product> = new EventEmitter(false);
 
-  displayedColumns: string[] = ['code', 'name', 'price', 'quantity', 'actions'];
+  displayedColumns: string[] = ['code', 'name', 'price', 'quantity', 'subtotal', 'actions'];
+
+  getTotalCost(): number {
+    let total = 0;
+    this.products.forEach((product) => total += (product.price * product.quantity));
+    return total;
+  }
 
   onAdd(): void {
     this.add.emit(true);
