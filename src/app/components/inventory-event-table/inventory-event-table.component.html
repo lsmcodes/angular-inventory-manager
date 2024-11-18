@@ -1,0 +1,35 @@
+<mat-table [dataSource]="inventoryEvents">
+  <ng-container matColumnDef="eventType">
+    <mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{
+      element.eventType | inventoryEventType
+    }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="product">
+    <mat-header-cell *matHeaderCellDef>Produto</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.product.name }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <mat-header-cell *matHeaderCellDef>Quantidade</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.quantity }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="createdAt">
+    <mat-header-cell *matHeaderCellDef>Data e Hora</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{
+      element.createdAt | date: "dd/MM/yyyy HH:mm"
+    }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="actions">
+      <button mat-flat-button (click)="onAdd()">Adicionar Movimentação</button>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="actions"></mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
