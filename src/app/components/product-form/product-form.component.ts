@@ -17,6 +17,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../model/product';
 import { ProductService } from '../../services/product.service';
 import { Location } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-product-form',
@@ -37,6 +39,7 @@ export class ProductFormComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
+    private dialog: MatDialog,
     private formBuider: NonNullableFormBuilder,
     private location: Location,
     private productService: ProductService,
@@ -98,7 +101,7 @@ export class ProductFormComponent implements OnInit {
     if (this.form.valid) {
       this.productService.saveProduct(this.form.value as Product).subscribe({
         next: () => this.onSuccess(),
-        error: (err) => console.log(err),
+        error: (err) => this.dialog.open(ErrorDialogComponent, {data: 'Erro ao salvar curso'}),
       });
     }
   }

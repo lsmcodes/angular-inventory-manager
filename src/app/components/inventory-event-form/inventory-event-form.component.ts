@@ -18,6 +18,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Product } from '../../model/product';
 import { InventoryEventService } from '../../services/inventory-event.service';
 import { ProductService } from '../../services/product.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-inventory-event-form',
@@ -39,6 +41,7 @@ export class InventoryEventFormComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
+    private dialog: MatDialog,
     private formBuilder: NonNullableFormBuilder,
     private inventoryEventService: InventoryEventService,
     private location: Location,
@@ -70,7 +73,7 @@ export class InventoryEventFormComponent implements OnInit {
                 .subscribe(() => this.onSuccess());
             }
           },
-          error: (err) => console.log(err),
+          error: (err) => this.dialog.open(ErrorDialogComponent, {data: 'Erro ao salvar movimentação'}),
         });
     }
   }
