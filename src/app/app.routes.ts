@@ -4,26 +4,26 @@ import { productResolver } from './resolver/product.resolver';
 import { InventoryEventFormComponent } from './components/inventory-event-form/inventory-event-form.component';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'products' },
+  { path: '', pathMatch: 'full', redirectTo: 'produtos' },
   {
-    path: 'products',
+    path: 'produtos',
     loadComponent: () =>
       import('./components/container/container.component').then(
         (mod) => mod.ContainerComponent
       ),
   },
   {
-    path: 'products/new',
+    path: 'produtos/criar',
     component: ProductFormComponent,
     resolve: { product: productResolver },
   },
   {
-    path: 'products/edit/:id',
+    path: 'produtos/editar/:id',
     component: ProductFormComponent,
     resolve: { product: productResolver },
   },
   {
-    path: 'products/inventory-events/new',
+    path: 'produtos/movimentacoes/criar',
     component: InventoryEventFormComponent
   }
 ];
