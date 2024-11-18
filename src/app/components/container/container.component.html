@@ -28,6 +28,7 @@
       <div *ngIf="inventoryEvents$ | async as inventoryEventPage; else loading">
         <app-inventory-event-table
           [inventoryEvents]="inventoryEventPage.content"
+          (add)="onAddInventoryEvent()"
         ></app-inventory-event-table>
 
         <mat-paginator

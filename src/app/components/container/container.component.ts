@@ -97,4 +97,8 @@ export class ContainerComponent implements OnInit {
         })
       );
   }
+
+  onAddInventoryEvent(): void {
+    this.router.navigate(['inventory-events/new'], { relativeTo: this.route });
+  }
 }

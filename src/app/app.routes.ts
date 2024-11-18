@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { productResolver } from './resolver/product.resolver';
+import { InventoryEventFormComponent } from './components/inventory-event-form/inventory-event-form.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'products' },
@@ -21,4 +22,8 @@ export const routes: Routes = [
     component: ProductFormComponent,
     resolve: { product: productResolver },
   },
+  {
+    path: 'products/inventory-events/new',
+    component: InventoryEventFormComponent
+  }
 ];

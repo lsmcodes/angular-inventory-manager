@@ -42,6 +42,10 @@ export class ProductService {
     return this.http.get<Product>(`${this.API}/${id}`).pipe(first());
   }
 
+  getProductByCode(code: string): Observable<Product> {
+    return this.http.get<Product>(`${this.API}/code/${code}`).pipe(first());
+  }
+
   updateProduct(product: Partial<Product>): Observable<Product> {
     return this.http.put<Product>(`${this.API}/${product.id}`, product).pipe(first());
   }

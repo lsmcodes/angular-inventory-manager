@@ -14,7 +14,7 @@ export class InventoryEventService {
 
   getInventoryEvents(page = 0, size = 5): Observable<InventoryEventPage> {
     return this.http
-      .get<InventoryEventPage>(this.API, { params: { page, size } })
+      .get<InventoryEventPage>(this.API, { params: { page, size , sortDirection: 'desc'} })
       .pipe(first());
   }
 
