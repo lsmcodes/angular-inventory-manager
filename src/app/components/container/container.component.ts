@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -17,6 +17,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { InventoryEventTableComponent } from '../inventory-event-table/inventory-event-table.component';
 import { ProductTableComponent } from '../product-table/product-table.component';
+import { CustomPaginatorIntl } from '../../shared/custom-paginator-intl';
 
 @Component({
   selector: 'app-container',
@@ -32,6 +33,7 @@ import { ProductTableComponent } from '../product-table/product-table.component'
   ],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
+  providers: [{provide: MatPaginatorIntl, useClass: CustomPaginatorIntl}],
 })
 export class ContainerComponent implements OnInit {
   products$: Observable<ProductPage> | null = null;
@@ -74,11 +76,11 @@ export class ContainerComponent implements OnInit {
   }
 
   onAddProduct(): void {
-    this.router.navigate(['new'], { relativeTo: this.route });
+    this.router.navigate(['criar'], { relativeTo: this.route });
   }
 
   onEditProduct(product: Product): void {
-    this.router.navigate(['edit', product.id], { relativeTo: this.route });
+    this.router.navigate(['editar', product.id], { relativeTo: this.route });
   }
 
   onDeleteProduct(product: Product): void {
@@ -121,6 +123,6 @@ export class ContainerComponent implements OnInit {
   }
 
   onAddInventoryEvent(): void {
-    this.router.navigate(['inventory-events/new'], { relativeTo: this.route });
+    this.router.navigate(['movimentacoes/criar'], { relativeTo: this.route });
   }
 }
