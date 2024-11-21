@@ -1,27 +1,49 @@
-# InventoryManager
+# Gerenciamento de Estoque
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+<div style="display:inline-block">
+        <picture>
+                <source media="(prefers-color-scheme: light)" srcset="https://img.shields.io/badge/Angular-black?style=for-the-badge&logo=Angular&logoColor=white">
+                <img src="https://img.shields.io/badge/Angular-white?style=for-the-badge&logo=Angular&logoColor=black" />
+        </picture>
+</div>
 
-## Development server
+## Visão Geral
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Aplicação Angular simples de gerenciamento de estoque.
 
-## Code scaffolding
+## Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Adicionar, listar, atualizar e excluir produtos
+- Adicionar e listar movimentações
 
-## Build
+## Capturas de Tela
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Tabela de Produtos
 
-## Running unit tests
+![Product Table](./docs/product-table.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Tabela de Movimentações
 
-## Running end-to-end tests
+![Inventory Event Table](./docs/inventory-event-table.png)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Formulário de Criação de Produto
 
-## Further help
+![Product Form](./docs/product-form.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Formulário de Criação de Movimentação
+
+![Inventory Event Form](./docs/inventory-event-form.png)
+
+## Executar
+
+Para executar a aplicação, é necessário ter Node.js/NPM instalado localmente.
+
+Instale as dependências:
+```
+npm install
+```
+Execute o projeto:
+```
+npm run start
+```
+Acesse http://localhost:4200 no browser.
